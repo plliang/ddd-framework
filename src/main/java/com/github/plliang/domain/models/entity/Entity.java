@@ -1,4 +1,4 @@
-package com.github.plliang.domain.entity;
+package com.github.plliang.domain.models.entity;
 
 import com.github.plliang.domain.vo.Identified;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import lombok.Setter;
  *
  * @author plliang
  * @since 2024-07-22 22:47:22
- * @param <T> id类型
+ * @param <ID> id类型
  */
 @Setter
 @Getter

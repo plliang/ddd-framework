@@ -1,17 +1,30 @@
 package com.github.plliang.domain.repository;
 
-import com.github.plliang.domain.aggregate.AggregateRoot;
-
-import java.lang.reflect.Proxy;
+import com.github.plliang.domain.models.aggregate.AggregateRoot;
 
 /**
+ * 仓库抽象接口
+ *
  * @author plliang
  * @version 1.0
  * @since 2024/7/22 23:37
  */
-public class RepositorySupport<T extends AggregateRoot> {
+public interface RepositorySupport<T extends AggregateRoot<ID>, ID> {
 
-    public T proxy(T aggregate) {
-        Proxy.newProxyInstance(this.getClass().getClassLoader(), new Class[AggregateRoot.class], )
-    }
+    /**
+     * 聚合持久化
+     *
+     * @param aggregate 聚合对象
+     * @return 持久化后的聚合对象
+     */
+    public AggregateRoot<ID> create(AggregateRoot<ID> aggregate);
+
+    public AggregateRoot<ID> update(AggregateRoot<ID> aggregate);
+
+    public AggregateRoot<ID> findById(ID id);
+
+    public AggregateRoot<ID> delete(ID id);
+
+    public AggregateRoot<ID> delete(AggregateRoot<ID> aggregate);
+
 }

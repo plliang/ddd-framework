@@ -26,5 +26,13 @@
             <artifactId>orika-core</artifactId>
             <version>1.4.6</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/de.danielbechler/java-object-diff -->
+        <dependency>
+            <groupId>de.danielbechler</groupId>
+            <artifactId>java-object-diff</artifactId>
+            <version>0.95</version>
+        </dependency>
+
     </dependencies>
 </project>
