@@ -1,6 +1,7 @@
 package com.github.plliang.domain.repository;
 
 import com.github.plliang.domain.models.aggregate.AggregateRoot;
+import de.danielbechler.diff.node.DiffNode;
 
 /**
  * 仓库抽象接口
@@ -17,14 +18,13 @@ public interface RepositorySupport<T extends AggregateRoot<ID>, ID> {
      * @param aggregate 聚合对象
      * @return 持久化后的聚合对象
      */
-    public AggregateRoot<ID> create(AggregateRoot<ID> aggregate);
+    public AggregateRoot<ID> create(T aggregate);
 
-    public AggregateRoot<ID> update(AggregateRoot<ID> aggregate);
+    public AggregateRoot<ID> update(T aggregate);
 
     public AggregateRoot<ID> findById(ID id);
 
     public AggregateRoot<ID> delete(ID id);
 
-    public AggregateRoot<ID> delete(AggregateRoot<ID> aggregate);
-
+    public AggregateRoot<ID> delete(T aggregate);
 }

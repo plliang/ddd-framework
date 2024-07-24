@@ -15,16 +15,14 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AggregateRoot<ID> implements Identified<ID> {
-
-    private AggregateRoot<ID> snapshot = null;
+public class AggregateRoot<ID>  extends ChangeTraceable implements Identified<ID> {
 
     private ID id;
     private Date createTime;
     private BaseUser creator;
     private Date updateTime;
     private BaseUser updater;
-    private int version;
+    private int _version;
 
     @Override
     public ID getIdentifier() {

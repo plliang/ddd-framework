@@ -9,21 +9,21 @@ import de.danielbechler.diff.node.DiffNode;
  * @version 1.0
  * @since 2024/7/23 22:34
  */
-public interface IChangeTraceableAggregate<Aggregate> {
+public interface IChangeTraceable {
 
     /**
      * 添加聚合追踪
      */
-    public void attach(AggregateRoot aggregate);
+    public void attach();
 
     /**
      * 解除追踪
      */
-    public void detach(AggregateRoot aggregate);
+    public void detach();
 
     /**
      * 聚合变更
      * @return 聚合的变更
      */
-    public DiffNode diff(AggregateRoot aggregate);
+    public DiffNode diff();
 }
