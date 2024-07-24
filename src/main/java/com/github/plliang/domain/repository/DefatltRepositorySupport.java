@@ -35,7 +35,7 @@ public abstract class DefatltRepositorySupport<T extends AggregateRoot<ID>, ID> 
         return 0;
     }
 
-    protected <T,R> List<R> poToDomainList(List<T> poList, Function<T,R> convertor) {
+    protected <R> List<R> poToDomainList(List<T> poList, Function<T,R> convertor) {
         List<R> domainList = new ArrayList<>(poList.size());
 
         for (T t : poList) {
