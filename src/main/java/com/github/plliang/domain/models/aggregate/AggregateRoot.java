@@ -1,5 +1,6 @@
 package com.github.plliang.domain.models.aggregate;
 
+import com.github.plliang.domain.models.entity.Entity;
 import com.github.plliang.domain.models.vo.BaseUser;
 import com.github.plliang.domain.vo.Identified;
 import lombok.Getter;
@@ -15,45 +16,6 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AggregateRoot<ID>  extends ChangeTraceable implements Identified<ID> {
+public class AggregateRoot<ID> extends Entity<ID> {
 
-    private ID id;
-    private Date createTime;
-    private BaseUser creator;
-    private Date updateTime;
-    private BaseUser updater;
-    private int _version;
-
-    @Override
-    public ID getIdentifier() {
-        return id;
-    }
-
-    /**
-     * 初始化
-     * @param creator 创建者
-     */
-    public void init(BaseUser creator) {
-        this.id = idGenerator();
-        this.createTime = new Date();
-        this.creator = creator;
-    }
-
-    /**
-     * 聚合更新
-     * @param updater 更新人
-     */
-    public void update(BaseUser updater) {
-        this.updater = updater;
-        this.updateTime = new Date();
-    }
-
-    /**
-     * ID生成器，有些数据是数据库自增ID，所以就不需要实现此方法
-     *
-     * @return ID
-     */
-    public ID idGenerator() {
-        return null;
-    }
 }

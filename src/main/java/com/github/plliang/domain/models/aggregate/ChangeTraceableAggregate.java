@@ -7,14 +7,16 @@ import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 
 /**
+ * 拥有变更追踪能力的聚合根
+ *
  * @author plliang
  * @version 1.0
  * @since 2024/7/23 22:43
  */
 @Getter
-public abstract class ChangeTraceable implements IChangeTraceable {
+public class ChangeTraceableAggregate<ID> extends AggregateRoot<ID> implements IChangeTraceable {
 
-    private ChangeTraceable snapshot = null;
+    private AggregateRoot<ID> snapshot = null;
 
     @Override
     public void attach() {
