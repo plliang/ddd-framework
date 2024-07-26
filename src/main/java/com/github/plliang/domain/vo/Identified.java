@@ -14,5 +14,5 @@ public interface Identified<ID> {
      *
      * @return 返回ID
      */
-    public ID getIdentifier();
+    public ID identifier();
 }

@@ -25,10 +25,10 @@ public abstract class Entity<ID> implements Identified<ID> {
     private BaseUser creator;
     private Date updateTime;
     private BaseUser updater;
-    private int _version;
+    private long lockVersion;
 
     @Override
-    public ID getIdentifier() {
+    public ID identifier() {
         return id;
     }
 
@@ -41,6 +41,7 @@ public abstract class Entity<ID> implements Identified<ID> {
         this.createTime = new Date();
         this.creator = creator;
         update(creator);
+        this.lockVersion = 1;
     }
 
     /**
@@ -50,6 +51,7 @@ public abstract class Entity<ID> implements Identified<ID> {
     public void update(BaseUser updater) {
         this.updater = updater;
         this.updateTime = new Date();
+        this.lockVersion++;
     }
 
     /**
@@ -67,7 +69,7 @@ public abstract class Entity<ID> implements Identified<ID> {
         this.creator = entity.creator;
         this.updateTime = entity.updateTime;
         this.updater = entity.updater;
-        this._version = entity._version;
+        this.lockVersion = entity.lockVersion;
     }
 
     public Entity(ID id) {

@@ -19,4 +19,9 @@ public class BaseUser {
     private String id;
 
     private String name;
+
+    public BaseUser(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
